@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width+device-width, initial-scale+1.0">
+    <title>ScaleVision</title>
+    <link rel="stylesheet" href="style3D.css">
+</head>
+<body>
+<div class="hero">
+    <nav>
+      <img src="menu.png" class="menu-img">
+      <img src="SVlogo.png" class="logo" alt="logo" width="192" height="108">
+      <ul>
+        <li><a href="#">English</a></li>
+        <li><a href="#">Indonesia</a></li>
+        <li><a href="#">About</a></liS>
+        <li><button id="logout-button" value="ok" href="../index.html">Logout</button>
+
+          <!-- <script type="module" src="firebaseconfig.js"></script> -->
+      
+          <script type="module">
+            import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+            import { getDatabase, set, ref ,push, child, onValue} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+      
+            const firebaseConfig = {
+              apiKey: "AIzaSyBVQcLbOlwnloA21Z61rvbBC4AZtxulAaE",
+              authDomain: "esp-cam-1b487.firebaseapp.com",
+              databaseURL: "https://esp-cam-1b487-default-rtdb.asia-southeast1.firebasedatabase.app",
+              projectId: "esp-cam-1b487",
+              storageBucket: "esp-cam-1b487.appspot.com",
+              messagingSenderId: "370397575421",
+              appId: "1:370397575421:web:9b0da64140cc2608b72694"
+            };
+
+      
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            let logoutButton = document.getElementById("logout-button");
+            console.log(logoutButton);
+      
+            logoutButton.addEventListener("click", (e) => {
+              const auth = getAuth(app);
+              signOut(auth)
+                .then(() => {
+                  alert("sukses logout");
+                  location.href = "../index.html";
+                })
+                .catch((error) => {});
+            });
+          </script>
+      </ul>
+      <img src="icon.png" class="icon-img">
+    </nav>
+
+     <div class="Tdprinter">
+        <img src="gif.gif" class="model">
+     </div>
+     <div class="text-container">
+        <h1>Integrated <br>Fruit Scanning <br>and Scaling</h1>
+        <p>ScaleVision combines traditional fruit scaling system with computer vision <br>for a hassle-free grocery shopping experience</p>
+            <a href="Dashboard\index.html">Let's Start</a>
+            <div class="control">
+            <p>04</p>
+            <div class="line"><span></span></div>
+            <p>05</p>
+        </div>
+        
+    </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="5">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <title>Dashboard</title>
+</head>
+
+<style>
+  /* CSS styles for columns */
+  .column {
+    float: left;
+    width: 50%;
+  }
+</style>
+<body>
+  <nav class="navbar">
+      <div class="container">
+        <div>
+          <img src="logo.png" class="logo" alt="logo" width="192" height="108">
+        <div class="menu">
+          <ul>
+            <li>
+              <a href="../user.html">Home</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#" class="active">Projects</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+            <li>
+              <a href="#">Blog</a>
+            </li>
+          </ul>
+          <ul class="options">
+            <li><a href="#">
+              <span class="material-icons">
+                search
+              </span>
+            </a></li>
+            <li><a href="#" class="notification">
+              <span class="material-icons">
+                notifications
+              </span>
+            </a></li>
+            <li><a href="#">
+              <img src="icon.png" alt="user" class="profile-img">
+            </a></li>
+          </ul>
+        </div>
+        </div> 
+        <div class="menu-btn">
+          <span class="material-icons">
+            segment
+          </span>
+        </div>
+      </div>
+    </nav>
+
+  <main class="dashboard">
+    <div class="panel list">
+      <li>
+        <h2>Data</h2>
+        <span>##</span>
+      </li>
+      <li id = "class_name">
+        <h4>Class</h4>
+      </li>
+      <li id = "weight">
+        <h4>Weight (gr)</h4>
+      </li>
+      <li id = "pricePerKg">
+        <h4>Price/Kg</h4>
+      </li>
+      <li id = "totalprice">
+        <h4>Total Price</h4>
+      </li>
+      <li id = "qrcode" class="qr">
+      </li>
+      <!-- <img src="https://firebasestorage.googleapis.com/v0/b/projeksemester3-7951b.appspot.com/o/screenshots%2FScreenshot%202023-06-19%20153447.png?alt=media&token=cbbbb1b7-c921-4120-b536-96c87e3847bc"> -->
+   </div>
+
+
+    <img src="https://firebasestorage.googleapis.com/v0/b/projeksemester3-7951b.appspot.com/o/screenshots%2Fscreenshot.jpg?alt=media&token=480031db-2ca9-4e7a-87cd-c0845e7565d2" class="capture">
+    <!-- <img src="BASElogo.png" class="base"> -->
+    </div>
+
+  </main>
+
+  
+
+  <script>
+    var componentIds = ["qrcode", "class_name","weight","pricePerKg","totalprice"];
+  
+    setInterval(function() {
+      componentIds.forEach(function(componentId) {
+        var component = document.getElementById(componentId);
+      });
+    }, 2000);
+  </script>
+
+
+  <script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+  <script src="main.js"></script>
+  
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+  
+  <script type="module">
+   // Import the functions you need from the SDKs you need
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getDatabase, set, get, ref ,push, child, onValue, runTransaction, update} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+    // web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBP8FDAg7z7kjNS44jWiln7U18UOHE49C8",
+      authDomain: "projeksemester3-7951b.firebaseapp.com",
+      databaseURL: "https://projeksemester3-7951b-default-rtdb.firebaseio.com",
+      projectId: "projeksemester3-7951b",
+      storageBucket: "projeksemester3-7951b.appspot.com",
+      messagingSenderId: "841712847324",
+      appId: "1:841712847324:web:2cb7917ae9aed528c12719"
+  };
+
+
+
+
+     // Initialize Firebase
+  
+  const app = initializeApp(firebaseConfig);
+
+  const database = getDatabase(app);
+
+  const dbRef = ref(database);
+
+  var classname=""
+  var weight=""
+  var totalprice=""
+
+  await get(child(dbRef,'ProjekAkhir/class_name')).then((snapshot) => {
+    classname=snapshot.val()
+  })
+
+
+
+  await get(child(dbRef,'weight/weight')).then((snapshot) => {
+    weight=snapshot.val()
+  })
+
+
+  console.log(classname)
+  console.log(weight)
+
+  var pricePerKg = ""
+          // get the price per kilogram based on the class of the item
+  switch (classname) {
+    case "UnderripeTomato":
+      pricePerKg = 20000;
+      break;
+    case "RipeTomato":
+      pricePerKg = 40000;
+      break;
+    case "UnderripeBanana":
+      pricePerKg = 18760;
+      break;
+    case "RipeBanana":
+      pricePerKg = 30000;
+      break;
+    case "UnderripeAvocado":
+      pricePerKg = 24000;
+      break;
+    case "RipeAvocado":
+      pricePerKg = 30000;
+      break;
+    default:
+
+  }
+
+  // calculate total price
+  var totalPrice = (weight / 1000) * pricePerKg;
+  console.log(totalPrice)
+
+  //await get(child(dbRef,'ProjekAkhir/totalprice')).then((snapshot) => {
+  //  totalprice=snapshot.val()
+  //})
+
+  $("<span>"+classname+"</span>").appendTo('#class_name');
+  $("<span>"+weight+"</span>").appendTo('#weight');
+  $("<span>"+pricePerKg+"</span>").appendTo('#pricePerKg');
+  $("<span>"+"Rp"+ totalPrice + ",00" +"</span>").appendTo('#totalprice');
+
+
+  console.log("before update")
+
+  const updates = {}
+  updates["ProjekAkhir/totalprice"]=totalPrice
+
+
+  update(dbRef,updates)
+  
+      
+
+  function generateUniqueId(totalPrice){
+    const timestamp = Date.now();
+    const uniqueId = `${totalPrice}-${timestamp}`;
+    return uniqueId;
+  }
+
+  var uniqueId = generateUniqueId(totalPrice);
+  console.log(uniqueId);
+  var qrCodeData = {
+    totalPrice: totalPrice,
+    uniqueId: uniqueId
+  }
+
+  var qrCodeText = JSON.stringify(qrCodeData);
+
+  new QRCode(document.getElementById("qrcode"), uniqueId);
+
+   
+    
+</script>
+</script>
+
+</body>
+</html>

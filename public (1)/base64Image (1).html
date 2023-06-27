@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encoded Image & line chart example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body>
+  <h1>Base64 Encoded Image</h1>
+  <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+  AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+      9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
+  <h1>Multiple line chart</h1>
+  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        //labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Line 1',
+          data: [12, 19, 3, 5, 2, 3, 20, 33, 23, 44, 56, 78],
+          borderColor: '#00ff00',
+          fill: false
+        }, {
+          label: 'Line 2',
+          data: [32, 45, 12, 56, 34, 23, 12, 45, 67, 23, 12, 34],
+          borderColor: '#0000ff',
+          fill: false
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

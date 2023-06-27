@@ -1,0 +1,175 @@
+body{
+ margin: 0;
+ font-family: Arial, Helvetica, sans-serif;
+color: #1f3b01;
+background: #fff;
+min-height: 100vh;
+}
+
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+
+}
+a {
+    text-decoration: none;
+    color: #1d2026;
+}
+
+p{
+    color: #ffff;
+    font-size: 0.9em;
+}
+
+small {
+   color: #6b6f8a;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* === Navbar === */
+.navbar {
+    text-decoration: none;
+    background: #024b10;
+    z-index: 3;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+}
+
+.navbar .container {
+    max-width: 1250px;
+    padding: 1em 2em;
+}
+
+.navbar .container > div {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    align-items: left;
+}
+
+.navbar .menu
+.navbar .social-media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul {
+    display: inline-block;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 0.5em;
+}
+
+.navbar ul a {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding-bottom: 0.2em;
+    transition: 0.3s;
+}
+
+.navbar ul a:hover {
+    color: #fff;
+}
+
+
+
+.navbar .container .menu-btn {
+    display: none;
+}
+
+.options span {
+    font-size: 2em;
+    color: #fff;
+}
+
+.profile-img {
+    width: 2.5em;
+    border-radius: 50%;
+}
+
+.notification {
+    position: realtive;
+}
+
+.notification::before {
+    content: "5";
+    position: absolute;
+    top: -1.5em;
+    right: -0.5em;
+    width: 1.5em;
+    height: 1.5em;
+    background: #ea335d;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22px;
+}
+
+
+/* ==== Dashboard ==== */
+.dashboard {
+    background: #ffffff;
+    padding: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+    position:relative;
+    top: 4.1em;
+    right: 0;
+    width: calc(100% - 18em);
+    overflow-x: hidden;
+}
+
+.panel {
+    width: 500px;
+    background: linear-gradient(
+        90deg, #70cc2b, #9bd840
+    );
+    box-shadow:
+    -5px -5px 8px #738659,
+    5px 5px 8px #293c11;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+
+.qr {
+    margin-left: 100px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    width: 50%;
+    height: 50%;
+  }
+  
+
+
+/* List panel */
+.list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2em;
+}
+
+.list li:not(:last-child) {
+    border-bottom: 1px #2b5e2a solid;
+}
+
+.list span {
+    color: #ea335d;
+}
+
